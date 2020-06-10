@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Arrays;
 
 class UniqueCharacter {
 	// Solution using additonal memory
@@ -30,6 +31,17 @@ class UniqueCharacter {
 		for(int i = 0; i < string.length(); i++) {
 			charArray[string.charAt(i)]++;
 			if(charArray[string.charAt(i)] > 1)
+				return false;
+		} 
+		return true;
+	}
+
+	// Solution that uses sort
+	boolean uniqueCharacterSort(String string) {
+		char[] chars = string.toCharArray();
+		Arrays.sort(chars);
+		for(int i = 0; i < chars.length; i++) {
+			if(chars[i] == chars[i + 1])
 				return false;
 		} 
 		return true;
