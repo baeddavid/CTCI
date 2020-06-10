@@ -14,8 +14,8 @@ class UniqueCharacter {
 
 	// Solution without using extra data structure
 	boolean uniqueCharacterTime(String string) {
-		for(int i = 0; i < string.length; i++) {
-			for(int j = i + 1; j < string.length; j++) {
+		for(int i = 0; i < string.length(); i++) {
+			for(int j = i + 1; j < string.length(); j++) {
 				if(string.charAt(i) == string.charAt(j))
 					return false;
 			}
@@ -23,5 +23,15 @@ class UniqueCharacter {
 		return true;
 	}
 
-	
+	// Solution using constant space
+	boolean uniqueCharacterConst(String string) {
+		string = string.toLowerCase();
+		int[] charArray = new int[256];
+		for(int i = 0; i < string.length(); i++) {
+			charArray[string.charAt(i)]++;
+			if(charArray[string.charAt(i)] > 1)
+				return false;
+		} 
+		return true;
+	}
 }
