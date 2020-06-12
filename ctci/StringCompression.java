@@ -1,4 +1,5 @@
 public class StringCompression {
+	// Solution using SB
 	String compressString(String str) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("");
