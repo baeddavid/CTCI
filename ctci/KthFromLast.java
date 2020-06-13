@@ -19,6 +19,23 @@ public class KthFromLast {
 
 		return current;
 	}
+
+	Node <Integer> kthFromLastOptimal(Node <Integer> head, int k) {
+		Node <Integer> fast = head, current = head;
+		int currentNode = 0;
+		
+		while(currentNode < k) {
+			currentNode++;
+			fast = fast.next;
+		}
+
+		while(fast.next != null) {
+			current = current.next;
+			fast = fast.next;
+		}
+
+		return current;
+	}
 }
 
 class Node <T> {
