@@ -24,7 +24,21 @@ public class DeleteDupeNode {
 
         return dummy.next;
     }
-}
+
+    // No buffer solution
+    public static void deleteDuplicateNoBuffer(Node <Integer> node) {
+        Node <Integer> key = node;
+        while(key != null) {
+            Node <Integer> fast = key;
+            while(fast.next != null) {
+                if(fast.next.t == key.t)
+                    fast.next = fast.next.next;
+                else
+                    fast = fast.next;
+            }
+            key = key.next;
+        }
+    }
 
 class Node <T> {
     public T t;
