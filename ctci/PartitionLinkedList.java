@@ -1,6 +1,6 @@
 public class PartitionLinkedList {
 	// Brute Force Solution creating two linked lists and then merging them
-    Node <Integer> parition(Node <Integer> head, int x) {
+    Node <Integer> partition(Node <Integer> head, int x) {
 		Node <Integer> LHead = new Node<>(-1);
 		Node <Integer> GHead = new Node<>(-1);
 		Node <Integer> current = head, lCurrent = LHead, gCurrent = GHead;
@@ -20,6 +20,25 @@ public class PartitionLinkedList {
 		lCurrent.next = GHead.next;
         gCurrent.next = null;
 		return LHead.next;
+	}
+
+	Node <Integer> partitionOptimal(Node <Integer> node, int x) {
+		Node <Integer> head = node;
+		Node <Integer> tail = node;
+
+		while(node != null) {
+            Node <Integer> next = node.next;
+			if(node.t < x) {
+				node.next = head;
+				head = node;
+			} else {
+				tail.next = node;
+				tail = node;
+			}
+			node = next;
+		}
+		tail.next = null;
+		return head;
 	}
 }
 
