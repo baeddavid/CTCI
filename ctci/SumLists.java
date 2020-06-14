@@ -1,20 +1,28 @@
 public class SumLists {
-	Node <Integer> sumLists(Node <Integer> num1, Node <Integer> num2) {
-		int carry = 0;
-		Node <Integer> curr1 = num1;
-		Node <Integer> curr2 = num2;
-		Node <Integer> newHead = new Node(-1);
-		Node <Integer> newCurr = newHead;
+Node <Integer> sumLists(Node <Integer> num1, Node <Integer> num2) {
+		int carry = 0, sum;
+		Node <Integer> newHead = null;
+		Node <Integer> prev = null;
+		Node <Integer> temp = null;
 
-		while(curr1 != null && curr2 != null) {
-			if(curr1.t + curr2.t > 10) carry = 1;
-			newCurr.next = new Node <Integer> ((curr1.t + curr2.t) % 10 + carry--);
-			curr1 = curr1.next;
-			curr2 = curr2.next;
-			newCurr = newCurr.next;
+		while(num1 != null || num2 != null) {
+			sum = carry + (num1 != null ? num1.t : 0) + (num2 != null ? num2.t : 0);
+			carry = (sum >= 10) ? 1 : 0;
+			sum = sum % 10;
+			temp = new Node<> (sum);
+            
+			if(newHead == null) newHead = temp;
+			else prev.next = temp;
+
+			prev = temp;
+			if (num1 != null) num1 = num1.next;
+			if (num2 != null) num2 = num2.next;
 		}
 
-		return newHead.next;
+        if(carry > 0)
+            temp.next = new Node <Integer> (carry);
+
+		return newHead;
 	}
 }
 
