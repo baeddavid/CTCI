@@ -1,4 +1,5 @@
 public class MergeTwoSortedLists {
+	// Optimized Solution??
 	public Node <Integer> mergeTwoSortedLists(Node <Integer> a, Node <Integer> b) {	
 		Node <Integer> newHead = new Node <>(-1);
 		Node <Integer> newCurr = newHead;
