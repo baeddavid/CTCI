@@ -30,6 +30,27 @@ public class ReverseSublist {
 		tail.next = curr;
 		return head;
 	}
+
+	// Optimal Solution
+	Node <Integer> reverseSubListOptimal(Node <Integer> head, int s, int f) {
+		Node <Integer> dummy = new Node<>(0);
+		Node <Integer> dummyCurr = dummy;
+		int k = 1;
+
+		while(k++  < s) {
+			dummyCurr = dummyCurr.next;
+		}
+
+		Node <Integer> iterator = new dummyCurr.next;
+		while(k < f) {
+			Node <Integer> temp = iterator.next;
+			iterator.next = temp.next;
+			temp.next = dummyCurr;
+			dummyCurr.next = temp;
+		}
+
+		return dummy.next;
+	}
 }
 
 class Node <T> {
