@@ -28,6 +28,23 @@ public class ReturnLoopCycle {
 		}
 		return null;
 	}
+
+	Node <Integer> returnLoopOptimal(Node <Integer> head) {
+		Node <Integer> slow = head, fast = head;
+		while(fast != null && fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow == fast) {
+				slow = head;
+				while(slow != fast) {
+					slow = slow.next;
+					fast = fast.next;
+				}
+				return slow;
+			}
+		}
+		return null;
+	}
 }
 
 class Node <T> {
