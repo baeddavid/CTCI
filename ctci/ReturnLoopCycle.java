@@ -29,6 +29,7 @@ public class ReturnLoopCycle {
 		return null;
 	}
 
+	// Optimal Solution
 	Node <Integer> returnLoopOptimal(Node <Integer> head) {
 		Node <Integer> slow = head, fast = head;
 		while(fast != null && fast.next != null && fast.next.next != null) {
