@@ -13,6 +13,18 @@ public class TestForCycle {
 
 		return false;
 	}
+
+	// Optimal Solution
+	boolean testForCycle(Node <Integer> head) {
+		Node <Integer> fast = head, slow = head;
+		while(fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+			if(fast == slow) 
+				return true;
+		}
+		return false;
+	}
 }
 
 class Node <T> {
