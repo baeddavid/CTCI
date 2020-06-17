@@ -29,6 +29,33 @@ public class Palindrome {
 
 		return true;
 	}
+
+	// Slightly improved palindrome solution
+	public boolean isListPalindrome(Node <Integer> head) {
+		return areListsEqual(head, reverseAndCopyList(head));
+	}
+
+	public boolean areListsEqual(Node <Integer> a, Node <Integer> b) {
+		Node <Integer> headA = a, headB = b;
+		while(headA != null && headB != null) {
+			if(headA.data != headB.data)
+				return false;
+			headA = headA.next;
+			headB = headB.next;
+		}
+		return true;
+	}
+
+	public Node <Integer> reverseAndCopyList(Node <Integer> head) {
+		Node <Integer> newHead = null;
+		while(head != null) {
+			Node <Integer> newNode = new Node <>(head.data);
+			newNode.next = newHead;
+			newHead = newNode;
+			head = head.next;
+		}
+		return newHead;
+	}
 }
 
 class Node <T> {
