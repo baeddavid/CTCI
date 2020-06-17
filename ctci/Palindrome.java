@@ -56,6 +56,30 @@ public class Palindrome {
 		}
 		return newHead;
 	}
+
+	// Stack solution
+	public boolean isListPalindromeStack(Node <Integer> head) {
+		Stack <Integer> stack = new Stack <>();
+		Node <Integer> fast = head, slow = head;
+
+		while(fast != null && fast.next != null) {
+			stack.add(slow.data);
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		if(fast != null) {
+			slow = slow.next;
+		}
+
+		while(slow != null) {
+			int top = stack.pop().intValue();
+			if(top != slow.data) 
+				return false;
+			slow = slow.next;
+		}
+		return true;
+	}
 }
 
 class Node <T> {
