@@ -80,6 +80,49 @@ public class Palindrome {
 		}
 		return true;
 	}
+
+	public boolean isListPalindromeOptimal(Node <Integer> head) {
+		// O(n) time and O(1) space complexity
+		// Get to the middle of the list first
+		Node <Integer> current = head, fast = head, prevCurrent = null, midNode;
+		while(fast != null && fast.next != null) {
+			prevCurrent = current;
+			current = current.next;
+			fast = fast.next.next;
+		}
+
+		if(fast != null) {
+			midNode = current;
+			current = current.next;
+		}
+
+		// Reverse the second half of the list and compare it to the front of the list
+		Node <Integer> secondHalf = current;
+		prevCurrent.next = null;
+		Node <Integer> reverseHead = reverse(secondHalf);
+		boolean result = areListsEqual(head, secondHalf);
+		reverseHead = reverse(secondHalf);
+
+		if(midNode != null) {
+			prevCurrent.next = midNode;
+			midNode.next = secondHalf;
+		} else {
+			prevCurrent.next = secondHalf;
+		}
+
+		return result;
+	}
+
+	public Node <Integer> reverseHead(Node <Integer> head) {
+		Node <Integer> current = head, prev = null;
+		while(current != null) {
+			Node <Integer> next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		return prev;
+	}
 }
 
 class Node <T> {
