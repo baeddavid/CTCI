@@ -18,7 +18,7 @@ public class DeleteKthNodeFromEnd {
 	}
 }
 
-class Node <T> {
+class Node <T> { 
 	public T data;
 	public Node next;
 
