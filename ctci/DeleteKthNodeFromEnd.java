@@ -18,8 +18,6 @@ public class DeleteKthNodeFromEnd {
 			fast = fast.next;
 		}
     
-            
-		Node <Integer> delete = slow.next;
 		slow.next = slow.next.next;
 		return head;
 	}
