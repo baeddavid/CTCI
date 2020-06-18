@@ -1,12 +1,19 @@
 public class DeleteKthNodeFromEnd {
     public Node <Integer> deleteKthNode(Node <Integer> head, int k) {
 		Node <Integer> slow = head, fast = head;
-		while(fast != null && k != 0) {
+		while(k != 0 && fast != null) {
 			fast = fast.next;
+            if(fast == null) {
+                return head.next;
+            }
             k--;
 		}
-
-		while(fast != null && fast.next != null) {
+        
+        if(fast == null) {
+            head = head.next;
+        }
+        
+		while(fast.next != null) {
 			slow = slow.next;
 			fast = fast.next;
 		}
@@ -14,7 +21,7 @@ public class DeleteKthNodeFromEnd {
             
 		Node <Integer> delete = slow.next;
 		slow.next = slow.next.next;
-		return delete;
+		return head;
 	}
 
 	public Node <Integer> deleteKthNodeBruteForce(Node <Integer> head, int k) {
