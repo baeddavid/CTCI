@@ -16,6 +16,27 @@ public class DeleteKthNodeFromEnd {
 		slow.next = slow.next.next;
 		return delete;
 	}
+
+	public Node <Integer> deleteKthNodeBruteForce(Node <Integer> head, int k) {
+		int length = 0;
+		Node <Integer> curr = head;
+
+		while(curr != null) {
+			length++;
+			curr = curr.next;
+		}
+
+		curr = head;
+        int key = length - k;
+		while(key > 1) {
+			curr = curr.next;
+            key--;
+		}
+
+		Node <Integer> delete = curr.next;
+		curr.next = curr.next.next;
+		return delete;
+	}
 }
 
 class Node <T> { 
