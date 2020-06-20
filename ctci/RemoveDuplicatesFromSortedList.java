@@ -1,4 +1,5 @@
 import java.util.TreeSet;
+import java.util.Iterator;
 
 public class RemoveDuplicatesFromSortedList {
 	Node <Integer> removeDupes(Node <Integer> head) {
@@ -25,7 +26,14 @@ public class RemoveDuplicatesFromSortedList {
 
 		Node <Integer> dummyHead = new Node <>(-1);
 		curr = dummyHead;
-		
+		Iterator <Integer> itr = set.iterator();
+
+		while(itr.hasNext()) {
+			curr.next = new Node <Integer> (itr.next());
+			curr = curr.next;
+		}
+
+		return dummyHead.next;
 	}
 }
 
