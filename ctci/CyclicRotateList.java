@@ -22,6 +22,35 @@ public class CyclicRotateList {
 		return answer;
 	}
 
+	// Optimal Solution
+	private static Node <Integer> getNodePrevK(Node <Integer> head, int k) {
+		Node <Integer> slow = head, fast = head;
+		while(k != 0 && fast != null) {
+			fast = fast.next;
+			k--;
+		}
+
+		while(fast.next != null) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+		return slow;
+	}
+
+	public static Node <Integer> rotateListK(Node <Integer> head, int k) {
+		if(k == 0) return head;
+		Node <Integer> disconnect = getNodePrevK(head, k);
+		Node <Integer> curr = disconnect, next = disconnect.next;
+
+		while(curr.next != null) {
+			curr = curr.next;
+		}
+
+		curr.next = head;
+		disconnect.next = null;
+		return next;
+	}
+
 	public static void main(String[] args) {
 		Node <Integer> a = new Node <>(1);
 		Node <Integer> b = new Node <>(2);
@@ -35,7 +64,7 @@ public class CyclicRotateList {
 		d.next = e;
 
 		Node <Integer> answer;
-		answer = rotateListKBrute(a, 2);
+		answer = rotateListK(a, 3);
 		Node <Integer> curr = answer;
 		while(curr != null) {
 			System.out.print(curr.data);
