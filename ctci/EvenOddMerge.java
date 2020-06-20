@@ -1,5 +1,22 @@
 public class EvenOddMerge {
-    //Brute Force Solution
+    // Brute Force Solution
+    public static Node <Intger> evenOddMergeBrute(Node <Integer> head) {
+	Node <Integer> newHead = new Node <>(-1);
+	Node <Integer> curr = head, newCurr = newHead;
+
+	while(curr != null) {
+	    if(curr.data % 2 == 0) {
+		newCurr.next = new Node <Integer> (curr.data);
+		newCurr = newCurr.next;
+	    } else {
+		newCurr.next = new Node <Integer> (curr.data);
+		newCurr = newCurr.next;
+	    }
+	}
+	return newHead.next;
+    }
+    
+    // Optimal Solution
     public static Node <Integer> evenOddMerge(Node <Integer> head) {
 	Node <Integer> evenHead = new Node <Integer> (-1);
 	Node <Integer> oddHead = new Node <Integer> (-1);
