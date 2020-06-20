@@ -8,11 +8,7 @@ public class DeleteKthNodeFromEnd {
             }
             k--;
 		}
-        
-        if(fast == null) {
-            head = head.next;
-        }
-        
+
 		while(fast.next != null) {
 			slow = slow.next;
 			fast = fast.next;
