@@ -24,4 +24,18 @@ public class dutchPartition {
 	    }
 	}
     }
+    // Optimal Solution
+    public static void dutchPartitionOptimal(List <Integer> A, int k) {
+	int pivot = A.get(k);
+	int smaller = 0, equal = 0, larger = A.size() - 1;
+	while(equal < larger) {
+	    if(A.get(equal) < pivot) {
+		Collections.swap(A, equal++, smaller++);
+	    } else if(A.get(equal) == pivot) {
+		equal++;
+	    } else {
+		Collections.swap(A, larger--, equal);
+	    }
+	}
 }
+    
