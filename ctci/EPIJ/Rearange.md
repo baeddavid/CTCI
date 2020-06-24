@@ -16,7 +16,7 @@ rearrange(A)
 elements. If an element at an even index is larger than an odd index then swap.
 
 rearrange(A)
-    for i <-- 1 to A.length
+    for i <-- 2 to A.length
         if A[i] % 2 == 0 AND A[i] > A[i - 1] OR A[i] % 2 == 1 AND A[i] < A[i - 1]
             swap(i, i - 1)
 
