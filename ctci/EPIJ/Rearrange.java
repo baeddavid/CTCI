@@ -9,4 +9,12 @@ public class Rearrange {
             Collections.swap(A, i, i + 1);
         }
     }
+
+    public void rearrangeOptimal(List <Integer> A) {
+        for(int i = 1; i < A.length; i++) {
+            if(A[i] % 2 == 0 && A[i] > A[i - 1] ||
+               A[i] % 2 == 1 && A[i] < A[i - 1])
+                Collections.swap(A, i, i - 1);
+        }
+    }
 }
