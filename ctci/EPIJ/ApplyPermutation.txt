@@ -9,6 +9,7 @@ Given an Array A of n elements and a permutation P, apply P to A.
 
 Solution
 
+Brute Force Solution using O(n) space and O(n) time.
 - Create a copy of the array and use it for our reference as keys.
     ApplyPermutation(P, A)
         let B[1..A.length] be new arrays
@@ -17,3 +18,13 @@ Solution
             B[P[i]] <-- A[aIndex]
             aIndex += 1
         return B
+
+Optimized Solution
+- Taking note of the permutation to be applied and the final result, I realized that the "sorted" positions for the permutation mean that there is no
+  change needed. Taking advantage of this property we can swap elements at i and P[i] iff i does not equal p[i]. We perform the swaps on both P and A,
+  and know that the permutation has been applied when the contents of P are sorted.
+  ApplyPermutation(P, A)
+      for i <-- 1 to P.length
+          if i != P[i]
+              swap(A, i, P[i])
+              swap(P, i, P[i])
