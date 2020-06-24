@@ -1,0 +1,19 @@
+Apply Permutation
+
+A permutation can be specified by an array P where P[i] represents the location of the element at i in the permutation.
+For example the array <2,0,1,3> represents the permutation that maps the element at location 0 to location 2, the element at location 1 to location 0,
+the element at location 2 to location 1, and keep the elment at location 3 unchanged. A permutation can be applied to an array to reorder the array.
+For example the permutation <2,0,1,3> applied to A = <a,b,c,d> yiled the array <b,c,a,d>.
+
+Given an Array A of n elements and a permutation P, apply P to A.
+
+Solution
+
+- Create a copy of the array and use it for our reference as keys.
+    ApplyPermutation(P, A)
+        let B[1..A.length] be new arrays
+        aIndex <-- 1
+        for i <-- 1 to P.length do
+            B[P[i]] <-- A[aIndex]
+            aIndex += 1
+        return B
