@@ -17,3 +17,15 @@ ArrayLeaders(A)
         if A[i] > maximum
            maximum = A[i]
            print(maximum)
+
+Brute Force Solution
+- We initialize two for loops. The outer for loops acts as a key and the inner for loop checks all elments against the key. If at any point the inner
+  for loop finds an element greater than the key we break out of the inner for loop and continue to the next key. This runs in O(n ^ 2) time.
+
+ArrayLeaders(A)
+    for i <-- 1 to A.length do
+        for j <-- i + 1 to A.length do
+            if A[j] >= A[i] then
+               break
+            if j == A.length then
+               print(A[j])
