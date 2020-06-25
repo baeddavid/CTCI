@@ -1,0 +1,17 @@
+Rotate Array
+Given an unsorted array A of size N, rotate it by D elements (clockwise).
+A: <1,2,3,4,5> D: 2
+O: <4,5,1,2,3>
+
+Solution
+
+Brute Force Solution
+- A somewhat obvious solution would be to shift the array down once, D times. The time complexity for such a solution would be O(dn).
+
+RotateArray(A, D)
+    while D > 0 do
+          D -= 1
+          temp <-- A[1]
+          for i <-- 1 to A.length - 1 do
+              A[i + 1] <-- A[i]
+          A[A.length] = temp
