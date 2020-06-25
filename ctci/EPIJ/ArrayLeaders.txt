@@ -1,0 +1,19 @@
+Leaders in an Array
+
+Write a program to print all the leaders in the array. An element is a leader if it is greater than all the elements to its right side.
+The rightmost element is always a leader. For example in the array <16,17,4,3,5,2> leaders are 17, 5, and 2.
+
+Solution
+
+Optimal Solution
+- We start from the right side of the array and keep track of a "rolling" maximum. If an elment at any index is greater than the maximum value
+  found so far print it and update the maximum.
+
+ArrayLeaders(A)
+    maximum <-- A[A.length]
+    print(maximum)
+
+    for i <-- A.length - 1 to 1 do
+        if A[i] > maximum
+           maximum = A[i]
+           print(maximum)
