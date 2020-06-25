@@ -1,0 +1,16 @@
+Given a linked list sort it in O(n log n) time and constant space
+
+Solution
+
+Merge Sort
+-  We can perform merge sort on a linked list to sort it in O(n log n) time and constant space. There are three specifics to keep in mind how merge sort
+   works.
+
+   Merge sort operates on the premise that it is merging two already sorted lists. We can take advantage of the fact that a list with one node is a
+   sorted list.
+
+   We begin with a recursive call to the list. We find the median of the list and recursively call the mergeSort on the left and right halves of the list.
+   When the recursion terminates we call the merge algorithm.
+
+   Splitting the list in half is more difficult with linked lists than with arrays due to the nature of pointers.
+   We need to write a seperate algorithm to split the list in half. The split algorithm will return the node before the median.
