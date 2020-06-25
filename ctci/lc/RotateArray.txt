@@ -11,10 +11,10 @@ Brute Force Solution
 RotateArray(A, D)
     while D > 0 do
           D -= 1
-          temp <-- A[1]
+          temp <-- A[A.length - 1]
           for i <-- 1 to A.length - 1 do
               A[i + 1] <-- A[i]
-          A[A.length] = temp
+          A[0] = temp
 
 Elegant Solution
 - Let us take a moment to consider the brute force solution and its bottlenecks. Our time complexity of O(dn) comes from the fact that we are force to
