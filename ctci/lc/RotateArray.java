@@ -14,10 +14,28 @@ public class RotateArray {
         }
     }
 
-    public static void main(String[] args) {
-        int[] A = new int[] {1,2,3,4,5};
-        rotateArray(A, 2);
-        for(int x : A)
-            System.out.print(x + " ");
+    public static void rotateArrayElegant(int[] A, int k) {
+        k = k % A.length;
+        int count = 0;
+
+        for(int i = 0; count < A.length; i++) {
+            int current = i;
+            int prev = A[i];
+            do {
+                int next = (current + k) % A.length;
+                int temp = A[next];
+                A[next] = prev;
+                prev = temp;
+                current = next;
+                count++;
+            } while(i != current);
+        }
     }
+
+        public static void main(String[] args) {
+            int[] A = new int[] {1,2,3,4,5};
+            rotateArray(A, 2);
+            for(int x : A)
+                System.out.print(x + " ");
+        }
 }
