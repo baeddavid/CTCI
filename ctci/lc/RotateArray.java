@@ -32,6 +32,20 @@ public class RotateArray {
         }
     }
 
+    public static void rotateArrayReverse(int[] A, int k) {
+        reverseTo(A, 0, A.length - 1);
+        reverseTo(A, 0, k - 1);
+        reverseTo(A, k, A.length - 1);
+    }
+
+    private static void reverseTo(int[] A, int start, int end) {
+        while(start < end) {
+            int temp = A[start];
+            A[start] = A[end];
+            A[end] = temp;
+        }
+    }
+
     public static void main(String[] args) {
         int[] A = new int[] {1,2,3,4,5};
         rotateArray(A, 2);
