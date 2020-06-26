@@ -50,7 +50,6 @@ Node <Integer> sort(Node <Integer> head) {
     Node <Integer> sortedList = merge(left, right);
     return sortedList;
 }
-}
 
 class Node <T> {
     public T data;
