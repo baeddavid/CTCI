@@ -49,3 +49,22 @@ RotateArray(A, D)
             current <-- next
             count += 1
         while i != current
+
+Reverse Array Solution
+- Looking at the expected output we notice an interesting pattern. Given the array <1,2,3,4,5> with D = 3 our output is <3,4,5,1,2>. Given an output
+  like this we can take advantage of the the last N - D + 1 numbers being in the front, essentialy "reversing" the direction of the array. Using this
+  observation we can reverse the array three times to acheive a rotated array in O(n) time and constant space.
+
+  We reverse the whole array first. This gives us <5,4,3,2,1>. Then we reverse the The first N - D + 1 numbers giving us <3,4,5,2,1>.
+  Finally we reverse the last D numbers giving us <5,4,3,1,2>.
+
+RotateArray(A, D)
+    Reverse(A, 1, A.length)
+    Reverse(A, 1, N - D + 1)
+    Reverse(A, D + 1, A.length)
+
+Reverse(A, start, end)
+    while start < end do
+        temp <-- A[start]
+        A[start] <-- A[end]
+        A[end] <-- temp
