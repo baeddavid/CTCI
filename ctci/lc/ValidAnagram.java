@@ -38,4 +38,24 @@ public class ValidAnagram {
         }
     }
 
+    public boolean validAnagram(String s, String t) {
+        int[] asciiCache = new int[128];
+        for(int i = 0; i < s.length(); i++) {
+            asciiCache[s.charAt(i)] += 1;
+        }
+
+        for(int j = 0; j < t.length(); j++) {
+            asciiCache[t.charAt(j)] -= 1;
+            if(asciiCache[t.charAt(j)] < 0)
+                return false;
+        }
+
+        for(int count : asciiCache) {
+            if(count != 0)
+                return false;
+        }
+
+        return true;
+
+    }
 }
