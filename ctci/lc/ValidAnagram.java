@@ -3,6 +3,7 @@ import java.util.HashMap;
 
 public class ValidAnagram {
     public boolean validAnagramSort(String s, String t) {
+        if(s.length() != t.length()) return false;
         char[] S = s.toCharArray();
         char[] T = t.toCharArray();
         Arrays.sort(S);
@@ -39,6 +40,8 @@ public class ValidAnagram {
     }
 
     public boolean validAnagram(String s, String t) {
+        if(s.length() != t.length()) return false;
+
         int[] asciiCache = new int[128];
         for(int i = 0; i < s.length(); i++) {
             asciiCache[s.charAt(i)] += 1;
@@ -56,6 +59,6 @@ public class ValidAnagram {
         }
 
         return true;
-
+       
     }
 }
