@@ -1,19 +1,33 @@
-class Stack <T> implements IStack <T> {
-    private static fonal int DEFAULT_CAPACITY = 10;
+interface IStack <T> {
+    public boolean push(T value);
+
+    public T pop();
+
+    public boolean contains(T value);
+
+    public int size();
+
+    public void clear();
+
+    public boolean isEmpty();
+}
+
+class ArrayStack <T> implements IStack <T>  {
+    private static final int DEFAULT_CAPACITY = 10;
     private T[] store;
     private int size = 0;
     private int capacity;
     private int top;
 
-    @SupressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public ArrayStack() {
         this.capacity = DEFAULT_CAPACITY;
         store = (T[]) new Object[DEFAULT_CAPACITY];
         top = -1;
     }
 
-    @SupressWarnings("unchecked")
-    public Stack(int capacity) {
+    @SuppressWarnings("unchecked")
+    public ArrayStack(int capacity) {
         this.capacity = capacity;
         store = (T[]) new Object[capacity];
         top = -1;
@@ -72,15 +86,25 @@ class Stack <T> implements IStack <T> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBulder();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         for(int i = top; i >= 0; i--) {
-            sb.appendt(this.pop());
+            sb.append(this.pop());
             if(i > 0) {
                 sb.append(", ");
             }
         }
         sb.append("]");
         return sb.toString();
+    }
+}
+
+public class Stack {
+    public static void main(String[] args) {
+        IStack <Integer> s = new ArrayStack <Integer>();
+        s.push(4);
+        s.push(2);
+        String d = s.toString();
+        System.out.print(d);
     }
 }
