@@ -1,0 +1,57 @@
+Valid Anagram
+
+Given two strings s and t, write a function to determine if t is an anagram of s.
+Input s = "anagram" , t = "nagaram"
+Output: true
+
+Solution
+
+Obvious solution
+-  The obvious solution would be to sort both strings and test for equality. This would be an O(n log n) solution.
+
+ValidAnagram(s, t)
+    if s.length != t.length
+        return false
+
+    sort(s)
+    sort(t)
+
+    for i <-- 1 to s.length do
+        if s[i] != t[i]
+           return false
+    return true
+
+Time Efficient Solution
+-  If we space is not a concern and we are primarily focused on improving the speed of the algorithm we could create a hashmap of the string's character
+   counts. We add all characters in t to a hashmap M as a key and keep track of the count. We begin subtracting count from M with characters from s. We
+   can terminate the loop early if any value is -1 or smaller since that means there are more of that specific character present in s than in t. Finally
+   we loop through the entirety of the map checking to see if any value is not 0. If all values are 0, it is an anagram.
+
+ValidAnagram(s, t)
+    if s.length != t.length do
+       return false
+
+    M <-- new HashMap
+    for i <-- 1 to s.length do
+        if M.contains(s[i])
+           M.add(s[i], M.get(s[i]) + 1)
+        else
+            M.add(s[i], 1)
+
+    for j <-- 1 to s.length do
+        if M.contains(j[i])
+           M.add(j[i], M.get(j[i]) - 1)
+           if M.get(j[i]) < 0 do
+              return false
+        else
+            return false
+
+    for k <-- 1 to j.length do
+        if M.get(j[k]) != 0
+           return false
+    return true;
+
+Time and Space efficient solution
+-  There is an argument to be made that we could reduce the space complexity of the solution by a constant factor compared to using a hashmap since arrays
+   are smaller data structures. The constant factor can be reduced even more depending on the encoding of the strings. If the strings are utf-8 encoded
+   they could potentially be 4 times larger than strings encoded in ASCII.
