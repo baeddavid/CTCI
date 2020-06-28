@@ -55,3 +55,18 @@ Time and Space efficient solution
 -  There is an argument to be made that we could reduce the space complexity of the solution by a constant factor compared to using a hashmap since arrays
    are smaller data structures. The constant factor can be reduced even more depending on the encoding of the strings. If the strings are utf-8 encoded
    they could potentially be 4 times larger than strings encoded in ASCII.
+
+ValidAnagram(s, t)
+    A <-- new Array size 128
+    for i <-- 1 to s.length do
+        A[s[i]] <-- A[s[i]] += 1
+
+    for j <-- 1 to t.length do
+        A[s[j]] <-- A[s[j]] -= 1
+        if A[s[j]] < 0
+           return false
+
+    for j <-- 1 to t.length do
+        if A[j] != 0
+           return false
+    return true
