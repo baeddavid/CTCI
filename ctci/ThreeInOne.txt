@@ -1,0 +1,13 @@
+Three in One
+Describe how you could use a single array to implement three stacks
+
+Solution
+
+-- N/3
+We could partition the array into three stacks and label them as such.
+S1 would consist of [0...N/3]
+S2 would consist of [N/3...2N/3]
+S3 would consist of [2N/3...N]
+
+All methods such as peek, pop, push, etc would take an additional parameter that indicates which stack to perform the operation on. If an operation were
+to exceed the constraints of the stack then we would throw an error or an exception.
