@@ -1,0 +1,22 @@
+Balanced Parantheses
+
+Given an expression stringp exp, write a program to examine whether the pairs and the oreders of "{", "}", "(", ")", "[", "]" are correct in exp.
+
+Solution
+
+- We can easily solve this problem using a stack. If we encounter an opening character we push it onto a stack. If we encounter a closing character we
+  pop it off the stack and check if they are matching. If they are not matching return false. We iterate through the string until we reach the end. If
+  the stack is not empty we return false.
+
+BalancedParantheses(s)
+    S <-- new Stack
+    for i <-- 1 to S.length
+        if S[i] = '[' OR '{' OR '(' do
+           S.push(S[i])
+        else
+           parantheses <-- S.pop()
+           if S.isEmpty() do
+              return false
+           if !isMatching(parantheses, S[i])
+              return false
+    return S.isEmpty() = empty
