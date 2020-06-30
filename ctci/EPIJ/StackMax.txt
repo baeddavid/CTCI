@@ -1,0 +1,7 @@
+Stack Max
+
+Implement a stack that performs push, pop, and max opertaion in O(1) time.
+
+Solution
+
+Same solution for the minimum stack, we create a node class where it keeps track of max values up to that node.
