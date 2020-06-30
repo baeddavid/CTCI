@@ -1,0 +1,45 @@
+Next Greater Element
+
+Given an array, print the Next Greater Element (NGE) for every element. The Next greater Element for an element x is the firster greater element on the
+right side of x in array. Elements for which no greater element exists, consider next greater element as -1.
+
+Solution
+
+Brute force solution
+- The brute force solution is fairly straight forward. We have two for loops one nested in the other.
+  If the element at A[j] is greater than the element at A[i] then we break, print out A[i] --> A[j] and continue to the next iteration.
+
+NGE(A)
+    for i <-- 1 to A.length do
+        next <-- -1
+        for j <-- i + 1 to A.length do
+            if A[i] < A[j] do
+                next <-- A[j]
+                break
+        print(A[i] --> next)
+
+Stack Solution
+- A better solution we can do to reduce the time complexity of the answer is to use a stack and keep track of the next element and see if it is larger
+  than the current element we are on. If it is larger we print out S.pop() --> next. If the element is not larger, we push the element back onto the
+  stack. It is important to note that we always add the next element to the stack.
+
+NGE(A)
+    S <-- new Stack
+    S.push(A[1])
+
+    for i <-- 2 to A.length do
+        next <-- A[i]
+        if S.isEmpty() = false do
+           element <-- S.pop()
+           while element < next do
+               print(element --> next)
+               if s.isEmpty() = false do
+                  break
+               element <-- s.pop()
+           if element > next do
+              s.push(element)
+        s.push(next)
+    while s.isEmpty() = false do
+        element <-- s.pop()
+        next <-- -1
+        print(element --> next)
