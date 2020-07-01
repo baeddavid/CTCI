@@ -1,0 +1,18 @@
+Sort Stack
+
+Write a program to sort a stack such that the smallest items are on the top. You can use an additional temprorary stack, but you may not copy the
+elements into any other data structure. The stack supports the following operations, push, pop, peek, and isEmpty.
+
+Solution
+
+Only Solution
+We create an additional stack T that is the same size as the input stack S. The goal is to perform a very rough sort algorithm using swaps. A good
+comparision would be insertion sort as we will be shifting back larger variables to the bottom of the stack one shift at a time.
+
+SortStack(S)
+    T <-- New Stack
+    while !S.isEmpty() do
+          element <-- S.pop()
+          while !T.isEmpty() AND element > T.peek() do
+                S.push(T.pop())
+          T.push(element)
