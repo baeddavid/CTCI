@@ -1,0 +1,8 @@
+Stack Plates
+
+Imagine a literal stack of plates. If the stack gets too high, it might topple. Therefore, in real life, we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this.
+
+Solution
+
+-- The implementation for this is fairly simple. The only thing we have to keep track of is the last "stack" of plates. We can easily do this by having
+   a seperate counter for the class which keeps track of the last stack appended to the array list.
