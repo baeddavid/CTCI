@@ -13,7 +13,7 @@ interface IStack {
 }
 
 interface SetOfStacks {
-    public int push(int data);
+    public void push(int data);
 
     public int pop();
 
@@ -42,6 +42,11 @@ class Stack implements IStack {
     }
 
     @Override
+    public int size() {
+        return top + 1;
+    }
+
+    @Override
     public boolean isEmpty() {
         return top == -1;
     }
@@ -52,7 +57,7 @@ class Stack implements IStack {
     }
 }
 
-class StackPlates implements SetOfStacks {
+public class StackPlates implements SetOfStacks {
     private int topOfStack = 0;
     private int stackSize;
     private ArrayList <Stack> A;
@@ -64,20 +69,23 @@ class StackPlates implements SetOfStacks {
 
     @Override
     public void push(int data) {
-        if(A.isEpty()) {
-            A.append(new Stack(stackSize));
+        if(A.isEmpty()) {
+            A.add(new Stack(stackSize));
         }
 
         if(A.get(topOfStack).isFull()) {
             topOfStack++;
-            A.append(new Stack(stackSize));
+            A.add(new Stack(stackSize));
         }
         A.get(topOfStack).push(data);
     }
 
     @Override
     public int pop() {
-        return A.get(topOfStack.pop());
+        if(A.get(topOfStack).isEmpty()) {
+            topOfStack--;
+        }
+        return A.get(topOfStack).pop();
     }
 
     @Override
@@ -92,9 +100,19 @@ class StackPlates implements SetOfStacks {
     @Override
     public boolean isEmpty() {
         for(Stack st : A) {
-            if(!st.isEmpty)
+            if(!st.isEmpty())
                 return false;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        StackPlates stack = new StackPlates(2);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        System.out.print(stack.pop());
+        System.out.print(stack.pop());
     }
 }
