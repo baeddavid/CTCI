@@ -1,6 +1,9 @@
+test -*- mode: org -*-
+
 Implement a MyQueue class which implements a queue using two stacks.
 
 Solution
 
 -- Using two stacks to make a queue we will have the option of either having a O(n) time for insertion or removal. Using two stacks to enque items in
 O(1) time is faster, since it makes one less pass.
+
