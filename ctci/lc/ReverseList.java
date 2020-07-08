@@ -9,4 +9,16 @@ public class ReverseList {
         }
         return prev;
     }
+
+    Node <Integer> reverseList(Node <Integer> L) {
+        if(L == null || L.next == null) {
+            return L;
+        }
+
+        Node <Integer> newHead = reverseList(L.next);
+        L.next.next = L;
+        L.next = null;
+
+        return newHead;
+    }
 }
