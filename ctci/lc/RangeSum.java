@@ -16,4 +16,23 @@ public class RangeSum {
             rangeSum(root.right, L, R);
         }
     }
+    // Iterative Solution
+    int rangeSum(Treenode root, int L, int R) {
+        int sum = 0;
+        TreeNode current = root;
+        Stack <TreeNode> s = new Stack <>();
+
+        while(current != null || !s.isEmpty()) {
+            while(current != null) {
+                s.push(current);
+                current = current.left;
+            }
+            current = s.pop();
+            if(L <= current.val && current.val <= R) {
+                sum += current.val;
+            }
+            current = current.right;
+        }
+        return sum;
+    }
 }
