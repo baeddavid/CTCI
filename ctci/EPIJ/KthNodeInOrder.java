@@ -30,4 +30,26 @@ public class KthNodeInOrder {
         }
         return null;
     }
+
+    // The getTreeSize subroutine
+    int getTreeSize(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+
+        int size = 1;
+        TreeNode current = root;
+        Stack <TreeNode> s = new Stack <>();
+
+        while(current != null || !s.isEmpty()) {
+            while(current != null) {
+                s.push(current);
+                current = current.left;
+            }
+            current = s.pop();
+            size++;
+            current = current.right;
+        }
+        return size;
+    }
 }
