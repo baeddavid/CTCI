@@ -9,4 +9,25 @@ public class KthNodeInOrder {
         }
         return null;
     }
+
+    // Optimal Solution. Going to assume we don't have size property and implement the subroutine as well
+    TreeNode kthNode(TreeNode root, int k) {
+        if(root == null) {
+            return null;
+        }
+
+        TreeNode current = root;
+        while(current != null) {
+            int leftTreeSize = getTreeSize(current.left);
+            if((leftTreeSize + 1) < k) {
+                k -= (leftTreeSize + 1);
+                current = current.right;
+            } else if(leftTreeSize == (k - 1)) {
+                return current;
+            } else {
+                current = current.left;
+            }
+        }
+        return null;
+    }
 }
