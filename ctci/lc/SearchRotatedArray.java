@@ -35,7 +35,7 @@ public class SearchRotatedArray {
         if(A[0] <= x) {
             return binarySearch(A, 0, pivot - 1, x);
         } else {
-            return binarySearch(A, pivot, A.length - 1, x);
+            return binarySearch(A, pivot + 1, A.length - 1, x);
         }
     }
 }
