@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class MergeTwoBinaryTrees {
    TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
        // If the first tree does not exist then we can return the second tree
@@ -19,4 +21,31 @@ public class MergeTwoBinaryTrees {
        // Our recursion has termianted and return t1
        return t1;
    }
+
+    // Iterative Stack Solution
+    TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        Stack <TreeNode []> stack = New Stack <>();
+        Stack.push(new TreeNode[] {t1, t2});
+
+        while(!stack.isEmpty()) {
+            TreeNode[] treeArr = Stack.pop();
+            if(treeArr[0] == null || treeArr[1] == null) {
+                continue;
+            }
+
+            TreeArr[0] += TreeArr[1];
+            if(treeArr[0] = null) {
+                treeArr[0].left = treeArr[1].left;
+            } else {
+                Stack.push(new TreeNode[] {treeArr[0].left, treeArr[1].left});
+            }
+
+            if(treeArr[0] == null) {
+                treeArr[0].right = treeArr[1].right;
+            } else {
+                Stack.push(new TreeNode[] {treeArr[0].right, treeArr[1].right});
+            }
+        }
+        return t1;
+    }
 }
