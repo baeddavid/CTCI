@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Arrays;
 
-public class ConstructBianryTreePostOrder {
+public class ConstructBinaryTreePostOrder {
     public TreeNode postOrderConstruct(int[] P, int[] I) {
         if(P == null || I == null || P.length == 0 || I.length == 0) {
             return null;
