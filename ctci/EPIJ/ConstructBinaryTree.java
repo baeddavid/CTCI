@@ -37,7 +37,8 @@ public class ConstructBinaryTree {
        List <Integer> P = IntStream.of(preorder).boxed().collect(Collectors.toList());
        List <Integer> I = IntStream.of(inorder).boxed().collect(Collectors.toList());
 
-       return helperConstruct(preorder, 0, preorder.length, 0, inorder.length, IntStream(0, I.size()).boxed().collect(Collectors.toMap(i -> I.get(i), i -> i)));
+       return helperConstruct(preorder, 0, preorder.length, 0, inorder.length,
+                              IntStream(0, I.size()).boxed().collect(Collectors.toMap(i -> I.get(i), i -> i)));
     }
 
     private TreeNode helperConstruct(int[] preorder, int pStart, int pEnd, int iStart, int iEnd, Map <Integer, Integer> nodeToInorderIdx) {
