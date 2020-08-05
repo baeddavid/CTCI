@@ -35,4 +35,20 @@ public class RangeSum {
         }
         return sum;
     }
+
+    // Second Variation
+    int rangeSumSecond(TreeNode root, int L, int R) {
+        if(isInRange(root.val)) {
+            sum += root.val;
+        }
+
+        rangeSumSecond(root.left, L, R);
+        rangeSumSecond(root.right, L, R);
+
+        return sum;
+    }
+
+    private boolean isInRange(int x, int i, int j) {
+        return (x >= i && x <= j);
+    }
 }
