@@ -1,4 +1,5 @@
 public class IncreastingBST {
+    TreeNode curr;
     public TreeNode increasingBST(TreeNode root) {
         TreeNode dummy = new TreeNode(-1);
         TreeNode current = dummy;
@@ -19,4 +20,21 @@ public class IncreastingBST {
             inorder(root.right, L);
         }
     }
+
+    public TreeNode increastBSTR(TreeNode root) {
+        TreeNode dummy = new TreeNode(-1);
+        curr = dummy;
+        inorderHelper(root);
+        return dummy.right;
+    }
+
+   private void inorderHelper(TreeNode root) {
+       if(root != null) {
+           inorderHelper(root.left);
+           root.left = null;
+           curr.right = node;
+           curr = node;
+           inorderHelper(root.right);
+       }
+   }
 }
