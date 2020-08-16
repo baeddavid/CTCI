@@ -1,33 +1,34 @@
 import java.util.Queue;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
 public class AverageLevelsBinaryTree {
-    public List<Double> averageOfLevels(TreeNode root) {
-        Queue<TreeNode> queue = new Queue<>();
-        List<Double> levelMean = new ArrayList<>();
+    public List<Float> getAverageLevels(TreeNode root) {
+        List<Float> average = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
         while(!queue.isEmpty()) {
-            Double currentLevelSum = 0;
-            Double nodeCount = 0;
+            Queue<TreeNode> temp = new LinkedList<>();
+            Long currentLevelSum = 0;
+            Long nodeCount = 0;
             while(!queue.isEmpty()) {
-                Queue<TreeNode> temp = new Queue<>();
-                TreeNode node = queue.poll();
+                TreeNode curr = queue.poll();
                 nodeCount++;
-                currentLevelSum += node.val;
+                currentLevelSum += curr.val;
 
-                if(node.left != null) {
-                    temp.add(node.left);
+                if(current.left != null) {
+                    temp.add(current.left);
                 }
 
-                if(node.right != null) {
-                    temp.add(node.right);
+                if(current.right != null) {
+                    temp.add(current.right);
                 }
             }
             queue = temp;
-            levelMean.add(currentLevelSum / nodeCount);
+            average.add(1.0 * currentLevelSum / nodeCount);
         }
-        return levelMean;
+        return average;
     }
 }
