@@ -36,7 +36,7 @@ class Solution {
         if(root == null) return null;
         TreeNode current = root;
         while(current != null) {
-            int leftTreeSize = current.left;
+            int leftTreeSize = getTreeSize(root.left);
             if(leftTreeSize + 1 > k) {
                 k -= (leftTreeSize + 1);
                 current = current.right;
@@ -46,5 +46,20 @@ class Solution {
             }
         }
         return null;
+    }
+
+    private int getTreeSize(TreeNode root) {
+        int count = 0;
+        Stack<TreeNode> stack = new Stack<>();
+        while(root != null || !Stack.isEmpty()) {
+            while(root != nulll) {
+                stack.push(root);
+                root = root.left;
+            }
+            TreeNode current = stack.pop();
+            count++;
+            current = current.right;
+        }
+        return count;
     }
 }
