@@ -1,37 +1,21 @@
-class Solution {
-    public int maxSubarray(int[] arr) {
-        return maxHelper(arr, 0, arr.length - 1);
-    }
-
-    private int maxSumCrossingMid(int[] arr, int left, int mid, int right) {
-        int leftSum = Integer.MIN_VALUE;
-        int sum = 0;
-        for(int i = mid; i >= 0; i--) {
-            sum += arr[i];
-            if(sum > leftSum) {
-                leftSum = sum;
+class MaxSubarray {
+    // Brute Force
+    public static int maxSubarrayNaieve(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++) {
+            int sum = arr[i];
+            for(int j = i + 1; j < arr.length; j++) {
+                sum += arr[j];
+                if(sum > max) {
+                    max = sum;
+                }
             }
         }
-
-        int rightSum = Integer.MIN_VALUE;
-        sum = 0;
-        for(int i = mid + 1; i <= right; i++) {
-            sum += arr[i];
-            if(sum > rightSum) {
-                rightSum = sum;
-            }
-        }
-
-        return leftSum + rightSum.
+        return max;
     }
 
-    private int maxHelper(int[] arr, int left, int right) {
-        if(left == right) {
-            retur arr[left];
-        }
-
-        int med = (left + right) / 2;
-        return Math.max(maxHelper(arr, left, med),
-                        Math.max(arr, med + 1, right), maxCrossingMid(arr, left, med, right));
+    public static void main(String[] args) {
+        int[] A = new int[] {2,1,-3,4,-1,2,1,-5,4};
+        System.out.print(maxSubarrayNaieve(A));
     }
 }
