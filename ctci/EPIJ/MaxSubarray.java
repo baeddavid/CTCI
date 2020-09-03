@@ -14,8 +14,24 @@ class MaxSubarray {
         return max;
     }
 
+    // Kadane's Algorithm
+    public static int kadane(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int maxSoFar = 0;
+        for(int i = 0; i < arr.length; i++) {
+            maxSoFar += arr[i];
+            if(maxSoFar > max) {
+                max = maxSoFar;
+            }
+            if(maxSoFar < 0) {
+                maxSoFar = 0;
+            }
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         int[] A = new int[] {2,1,-3,4,-1,2,1,-5,4};
-        System.out.print(maxSubarrayNaieve(A));
+        System.out.print(kadane(A));
     }
 }
