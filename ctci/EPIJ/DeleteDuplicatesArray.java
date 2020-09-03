@@ -10,7 +10,7 @@ class DeleteDuplicatesArray {
     }
 
     public static void main(String[] args) {
-        int[] A = new int {2, 3, ,5 ,6 ,8, 11, 11, 11 13};
+        int[] A = new int {2, 3, 5, 5 ,6 ,8, 11, 11, 11 13};
         System.out.print(deleteDuplicates(array));
     }
 }
