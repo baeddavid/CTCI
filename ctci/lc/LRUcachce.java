@@ -28,7 +28,13 @@ class LRUCache {
 
     public void put(int key, int val) {
         int currentSize = list.getSize();
-        if(currentSize == capacity) {
+        if(map.containsKey(key)) {
+            System.out.print("here");
+            list.ammend(map.get(key), val);
+            list.delete(map.get(key));
+            list.insert(map.get(key).data.key, map.get(key).data.val);
+            return;
+        } if(currentSize == capacity) {
             LRUNode node = list.deleteTail();
             map.remove(node.data.key);
         }
@@ -54,6 +60,11 @@ class LRULinkedList {
         head = null;
         tail = null;
         size = 0;
+    }
+
+    public void ammend(LRUNode node, int val) {
+        node.data.val = val;
+        System.out.println("I changed a value");
     }
 
     // Insert Method - Inserts from the front. We are building list backwards.
@@ -83,12 +94,19 @@ class LRULinkedList {
 
     // Delete Tail Method - Removes the tail from the list
     public LRUNode deleteTail() {
+        if(tail.next == null && tail.prev == null) {
+            LRUNode node = tail;
+            head = null;
+            tail = null;
+            return node;
+        } else {
         LRUNode deletedNode = tail;
         tail = tail.prev;
         tail.next.prev = null;
         tail.next = null;
         size--;
         return deletedNode;
+        }
     }
 
     public void print() {
@@ -134,13 +152,19 @@ class LRUPair {
 
 public class LRUcachce {
     public static void main(String[] args) {
-        LRUCache cache = new LRUCache(1);
-        cache.put(2, 1);
+        LRUCache cache = new LRUCache(2);
+        cache.put(2,1);
+        cache.put(1,1);
         cache.print();
-        System.out.println(cache.get(2));
-        cache.put(3, 2);
+        cache.put(2,3);
         cache.print();
-        System.out.println(cache.get(2));
-        System.out.println(cache.get(3));
+        cache.put(4,1);
+        cache.print();
+        print(cache.get(1));
+        print(cache.get(2));
+    }
+
+    private static void print(int input) {
+        System.out.println(input);
     }
 }
