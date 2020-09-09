@@ -4,7 +4,8 @@ import java.util.ArrayList;
 public class PascalTriangle {
     // Given an integer construct a pascal triangle with the number of rows
     public static List<List<Integer>> pascalTriangle(int n) {
-        List<List<Intege>> triangle = new ArrayList<>();
+        List<List<Integer>> triangle = new ArrayList<>();
+        triangle.add(new ArrayList<Integer>());
         if(n == 0) { return triangle; }
 
         triangle.get(0).add(1);
@@ -19,5 +20,21 @@ public class PascalTriangle {
             triangle.add(row);
         }
         return triangle;
+    }
+
+    public static void print(List<List<Integer>> A) {
+        for(int i = 0; i < A.size(); i++) {
+            System.out.print("[");
+            for(int j = 0; j < A.get(i).size(); j++) {
+                System.out.print(A.get(i).get(j) + ", ");
+            }
+            System.out.print("]");
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        List<List<Integer>> A = pascalTriangle(4);
+        print(A);
     }
 }
