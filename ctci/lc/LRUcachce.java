@@ -1,9 +1,9 @@
 import java.util.HashMap;
 
 class LRUCache {
-    public final LinkedList list;
-    public final HashMap<Integer, Node> map;
-    public int capacity;
+    private final LinkedList list;
+    private final HashMap<Integer, Node> map;
+    private final int capacity;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
@@ -14,7 +14,7 @@ class LRUCache {
     public int get(int key) {
         Node node = map.get(key);
         if(node == null) { return -1; }
-        list.moveToHead(node);
+        moveToHead(node);
         return node.val;
     }
 
@@ -31,8 +31,13 @@ class LRUCache {
             }
         } else {
             node.val = val;
-            list.moveToHead(node);
+            moveToHead(node);
         }
+    }
+
+    private void moveToHead(Node node) {
+        list.delete(node);
+        list.insert(node);
     }
 
     public void print() {
@@ -92,13 +97,12 @@ class LinkedList {
         return deleted;
     }
 
-    public void moveToHead(Node node) {
-        delete(node);
-        insert(node);
-    }
-
     public int size() {
         return size;
+    }
+
+    public Node getHead() {
+        return head.next;
     }
 
     public Node getTail() {
@@ -114,22 +118,4 @@ class LinkedList {
         System.out.println();
     }
 }
-
-public class LRUcachce {
-    public static void main(String[] args) {
-        LRUCache cache = new LRUCache(2);
-        cache.put(2,1);
-        cache.put(2,2);
-        cache.print();
-        print(cache.get(2));
-        cache.put(1,1);
-        cache.print();
-        cache.put(4,1);
-        cache.print();
-        print(cache.get(2));
-    }
-
-    private static void print(int input) {
-        System.out.println(input);
-    }
 }
