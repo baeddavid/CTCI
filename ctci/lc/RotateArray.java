@@ -45,11 +45,4 @@ public class RotateArray {
             A[end] = temp;
         }
     }
-
-    public static void main(String[] args) {
-        int[] A = new int[] {1,2,3,4,5};
-        rotateArray(A, 2);
-        for(int x : A)
-            System.out.print(x + " ");
-    }
 }
