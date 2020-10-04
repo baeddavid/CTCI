@@ -9,6 +9,22 @@ public class RodCutting {
         return maxProfit;
     }
 
+
+    // Cached Solution
+    public static int rodCutting(int[] prices, int length) {
+        int[] cache = new int[length + 1];
+        cache[0] = 0;
+        int max = Integer.MIN_VALUE:
+
+        for(int i = 1; i <= length; i++) {
+            for(int j = 0; j < i; j++) {
+                max = Math.max(max, prices[j] + cache[i - j - 1]);
+            }
+            cache[i] = max;
+        }
+        return cache[length];
+    }
+
     public static void main(String[] args) {
         int[] prices = new int[] { 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
         System.out.println(rodCutting(prices, 4));
