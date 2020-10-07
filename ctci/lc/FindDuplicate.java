@@ -1,5 +1,5 @@
-public class FindDuplicate {
-    public int findDuplicates(int[] nums) {
+pulic class FindDuplicate {
+    public static int findDuplicate(int[] nums) {
         int slow = nums[0];
         int fast = nums[0];
 
@@ -18,6 +18,6 @@ public class FindDuplicate {
 
     public static void main(String[] args) {
         int[] arr = new int[] { 1, 3, 4, 2, 2 };
-        System.out.println(findDuplicates(arr));
+        System.out.println(findDuplicate(arr));
     }
 }
