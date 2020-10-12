@@ -9,14 +9,10 @@ public class LowestCommonAncestor {
         }
 
         Status LeftTree = helper(root.left, x, y);
-        if(LeftTree.count == 2) {
-            return LeftTree;
-        }
+        if(LeftTree.count == 2) { return LeftTree; }
 
         Status RightTree = helper(root.right, x, y);
-        if(RightTree.count == 2) {
-            return RightTree;
-        }
+        if(RightTree.count == 2) { return RightTree; }
 
         int count = LeftTree.count + RightTree.count + (root == x ? 1 : 0) + (root == y ? 1 : 0);
         return new Status(count, (count == 2 ? root : null));
