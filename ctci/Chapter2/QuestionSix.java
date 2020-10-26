@@ -13,19 +13,26 @@ public class QuestionSix {
         boolean isPalindromeBool = false;
         // If fast is null then there are an even number of nodes in the list.
         if(fast == null) {
+            // Get the second list
             Node secondList = current.next;
             current.next = null;
+            // Reverse the second list
             secondList = reverseList(secondList);
+            // Then compare both lists
             isPalindromeBool = compareLists(head, secondList);
+            // Restore the second list to its original ordering
             secondList = reverseList(secondList);
+            // Reconnect the lists
             current.next = secondList;
         } else {
             Node secondList = current.next;
             current.next = null;
+            // Disconnext the middle node from the list
             prev.next = null;
             secondList = reverseList(secondList);
             isPalindromeBool = compareLists(head, secondList);
             secondList = reverseList(secondList);
+            // Reconenct the middle node
             prev.next = current;
             current.next = secondList;
         }
