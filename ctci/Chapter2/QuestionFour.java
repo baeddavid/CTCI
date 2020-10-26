@@ -25,6 +25,23 @@ public class QuestionFour {
         return lessThanHead.next;
     }
 
+    public static Node partitionFast(Node node, int x) {
+        Node head = node, Node tail = node;
+        while(node != null) {
+            Node next = node.next;
+            if(node.data < x) {
+                head.next = node;
+                head = node;
+            } else {
+                tail.next = node;
+                tail = node;
+            }
+            node = next;
+        }
+        tail = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         Node a = new Node(3);
         Node b = new Node(5);
