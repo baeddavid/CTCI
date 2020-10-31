@@ -1,8 +1,16 @@
 // Implement a MyQueue class which implements a queue using two stacks
 
-public class MyQueue {
+public class QuestionFour {
     public static void main(String[] args) {
-
+        MyQueue queue = new MyQueue(4);
+        queue.enque(1);
+        queue.enque(2);
+        queue.enque(3);
+        queue.enque(4);
+        System.out.println(queue.deque());
+        System.out.println(queue.deque());
+        System.out.println(queue.deque());
+        System.out.println(queue.deque());
     }
 }
 
@@ -15,19 +23,39 @@ class MyQueue {
         stack = new Stack(capacity);
     }
 
+    // This is the O(n) enque implementation
     public void enque(int val) {
         if(stack.isEmpty()) { stack.push(val); }
         else {
             Stack temp = new Stack(capacity);
-            temp.push(val);
             while(!stack.isEmpty()) {
                 temp.push(stack.pop());
             }
-            stack = temp;
+            stack.push(val);
+            while(!temp.isEmpty()) {
+                stack.push(temp.pop());
+            }
         }
     }
 
     public int deque() {
+        return stack.pop();
+    }
+
+    // This is the O(n) deque implementation
+    public void enque(int val) {
+        stack.push(val);
+    }
+
+    public int deque() {
+        Stack temp = new Stack(capacity);
+
+        if(!stack.isEmpty()) {
+            while(!stack.isEmpty()) {
+                temp.push(stack.pop());
+            }
+        }
+        stack = temp;
         return stack.pop();
     }
 }
@@ -35,8 +63,10 @@ class MyQueue {
 class Stack {
     public int top;
     public int[] stackArr;
+    public int capacity;
 
     public Stack(int capacity) {
+        this.capacity = capacity;
         stackArr = new int[capacity];
         top = -1;
     }
