@@ -9,16 +9,19 @@ import java.util.LinkedList;
 public class QuestionSix {
     public static void main(String[] args) {
         AnimalShelter animalShelter = new AnimalShelter();
-        animalShelter.enque("dog");
-        animalShelter.enque("cat");
-        animalShetler.enque("dog");
+        animalShelter.enque("dog", "dog1");
+        animalShelter.enque("cat", "cat1");
+        animalShelter.enque("dog", "dog2");
+        System.out.println(animalShelter.dequeCat().name);
     }
 }
 
 class AnimalShelter {
     public LinkedList<Animal> list;
 
-    public AnimalShelter() {  }
+    public AnimalShelter() {
+        list = new LinkedList<>();
+    }
 
     public void enque(String breed, String name) {
         Animal newAnimal = new Animal(breed, name);
@@ -40,7 +43,7 @@ class AnimalShelter {
 
     public Animal dequeCat() {
         for(int i = 0; i < list.size(); i++) {
-            if(list.get(i).breed = "cat") {
+            if(list.get(i).breed == "cat") {
                 return list.remove(i);
             }
         }
