@@ -19,6 +19,31 @@ public class QuestionOne {
         }
     }
 
+    public static void dutchFlagBad(int[] A, int i) {
+        int pivot = A[i];
+        int lessThan = 0, greaterThan = A.length - 1;
+        // The first loop to get elements lower than the pivot
+        for(int j = 0; j < A.length; j++) {
+            if(A[j] < pivot) {
+                swap(A, j, lessThan++);
+            }
+        }
+        // The second loop to get elements greater than the pivot
+        for(int j = A.length - 1; j >= 0; j--) {
+            if(A[j] > pivot) {
+                swap(A, j, greaterThan--);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] A = new int[] { 1, 2, 2, 1, 3, 1, 2, 1 };
+        dutchFlagBad(A, 1);
+        for(int x : A) {
+            System.out.println(x + " ");
+        }
+    }
+
     private static void swap(int[] A, int x, int y) {
         int temp = A[x];
         A[x] = A[y];
