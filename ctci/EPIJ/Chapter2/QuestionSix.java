@@ -15,9 +15,8 @@ public class QuestionSix {
         int maxPrice = Integer.MIN_VALUE;
         for(int i = A.length - 1; i > 0; i--) {
             maxPrice = Math.max(maxPrice, A[i]);
-            maxProfit = Math.max(maxProfit ,
-                                 maxPrice - A[i] + list.get(i));
-
+            maxProfit = Math.max(maxPrice,
+                                 maxPrice - A[i] + list.get(i - 1));
         }
         return maxProfit;
     }
