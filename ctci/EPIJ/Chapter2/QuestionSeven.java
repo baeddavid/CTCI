@@ -12,6 +12,15 @@ public class QuestionSeven {
         }
     }
 
+    public static void bruteForce(List<Character> A, List<Integer> P) {
+        List<Character> temp = new ArrayList<>();
+        // Copy elements from original permutation
+        for(Character x : A) { temp.add(x); }
+        for(int i = 0; i < A.size(); i++) {
+            A.set(P.get(i), temp.get(i));
+        }
+    }
+
     public static void main(String[] args) {
         List<Integer> P = new ArrayList<>();
         P.add(2);
@@ -25,7 +34,7 @@ public class QuestionSeven {
         A.add('c');
         A.add('d');
 
-        applyPermutation(A, P);
+        bruteForce(A, P);
         for(Character c : A) {
             System.out.print(c + " ");
         }
