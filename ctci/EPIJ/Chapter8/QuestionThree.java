@@ -8,6 +8,15 @@ public class QuestionThree {
         else { return magicIndex(A, left, med - 1); }
     }
 
+    public static int bruteForce(int[] A) {
+        for(int i = 0; i < A.length; i++) {
+            if(A[i] == i) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         int[] A = new int[] { -7, -3, 1, 3, 7, 12 };
         System.out.println(magicIndex(A, 0, A.length));
