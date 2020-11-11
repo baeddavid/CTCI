@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class QuestionFour {
-    static ArrayList<String> perms = new ArrayList<String>();
     public static ArrayList<String> getPerms(String str) {
         if(str == null) { return null; }
 
@@ -30,10 +29,15 @@ public class QuestionFour {
     }
 
     public static ArrayList<String> bruteForce(String str, int left, int right) {
+        ArrayList<String> perms = new ArrayList<String>();
+        return helper(str, perms, left, right);
+    }
+    
+    public static ArrayList<String> helper(String str, ArrayList<String> perms, int left, int right) {
         if(left == right) { perms.add(str); }
         for(int i = left; i <= right; i++) {
             str = swap(str, left, i);
-            bruteForce(str, left + 1, right);
+            helper(str, perms, left + 1, right);
             str = swap(str, left, i);
         }
         return perms;
