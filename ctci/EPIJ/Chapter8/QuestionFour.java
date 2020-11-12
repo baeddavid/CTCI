@@ -10,12 +10,19 @@ public class QuestionFour {
             return permutations;
         }
 
+        // Get the first character to permute
         char first = str.charAt(0);
+        // Get the rest of the string minus the character we are using
         String remainder = str.substring(1);
+        // Recursively permute the remainder of the string we have 
         ArrayList<String> words = getPerms(remainder);
+        // Iterate through all the completed permutations of remainder
         for(String word: words) {
+            // Iterate through the string
             for(int j = 0; j <= word.length(); j++) {
+                // Insert the character we have stored at all possible indices
                 String s = insertCharAt(word, first, j);
+                // Add the completed permutation to the list
                 permutations.add(s);
             }
         }
