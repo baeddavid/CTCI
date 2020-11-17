@@ -14,6 +14,7 @@ public class QuestionPowerSet {
                 ArrayList<Integer> newSubset = new ArrayList<>();
                 newSubset.addAll(subset);
                 newSubset.add(currentElement);
+                // To avoid concurrent modification exception
                 currentPowerSet.add(newSubset);
             }
             powerset.addAll(currentPowerSet);
