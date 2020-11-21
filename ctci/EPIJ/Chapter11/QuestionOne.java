@@ -3,6 +3,15 @@ public class QuestionOne {
         return helper(A, k, 0, A.length - 1);
     }
 
+    public static int brute(int[] A, int k) {
+        for(int i = 0; i < A.length; i++) {
+            if(A[i] == k) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     private static int helper(int[] A, int k, int left, int right) {
         if(left > right) {
             return -1;
