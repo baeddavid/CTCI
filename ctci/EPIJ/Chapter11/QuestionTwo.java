@@ -13,6 +13,15 @@ public class QuestionTwo {
         }
     }
 
+    public static int brute(int[] A) {
+        for(int i = 0; i < A.length; i++) {
+            if(A[i] == i) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     public static void main(String[] args) {
         int[] A = new int[] { -4, -2, 0, 3, 5 };
         System.out.print(index(A, 0, A.length - 1));
