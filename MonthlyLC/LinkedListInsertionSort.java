@@ -8,6 +8,7 @@ class Solution {
             while(prev.next != null && prev.next.val < current.val) {
                 prev = prev.next;
             }
+            ListNode next = current.next;
             current.next = prev.next;
             prev.next = current;
             current = next;
