@@ -1,5 +1,5 @@
 class Solution {
-    public boolean isValidVST(TreeNode root) {
+    public boolean isValidBST(TreeNode root) {
         return helper(root, null, null)
     }
 
