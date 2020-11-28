@@ -28,63 +28,72 @@ public class AddNumbers2 {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode curr1 = l1, curr2 = l2;
-        int size1 = 0, size2 = 0;
-        while(curr1 != null) {
-            curr1 = curr1.next;
-            size1++;
-        }
+        int size1 = size(l1), size2 = size(l2);
 
-        while(curr2 != null) {
-            curr2 = curr2.next;
-            size2++;
-        }
-
+        // size 1 will be the larger of the two lists
         if(size2 > size1) {
-            int temp = size2;
-            size2 = size1;
-            size1 = temp;
-
-            ListNode tempNode = curr1;
-            curr1 = curr2;
-            curr2 = tempNode;
+            ListNode temps = l1;
+            l1 = l2;
+            l2 = temps;
+            
+            int temp = size1;
+            size1 = size2;
+            size2 = temp;
         }
-        curr1 = l1;
-        curr2 = l2;
 
-        ListNode dummy = new ListNode();
-        ListNode dummyCurr = dummy;
-        while(size2 < size1) {
-            ListNode newNode = new ListNode(curr1.val);
-            dummyCurr.next = newNode;
-            dummyCurr = dummyCurr.next;
-            curr1 = curr1.next;
+        ListNode result = null;
+        ListNode n = null;
+        ListNode curr1 = l1, curr2 = l2;
+
+        System.out.println(size1);
+        System.out.println(size2);
+        while(size1 > size2) {
             size1--;
+            n = new ListNode(curr1.val);
+            n.next = result;
+            curr1 = curr1.next;
+            result = n;
         }
-    
+
         while(curr1 != null && curr2 != null) {
-            ListNode newNode = new ListNode(curr1.val + curr2.val);
-            dummyCurr.next = newNode;
-            if(newNode.val == 10) {
-                newNode.val = 0;
-                ListNode candidate = newNode;
-                while(candidate.val == 0) {
-                    ListNode newCurrent = dummy.next;
-                    while(newCurrent.next != candidate) {
-                        newCurrent = newCurrent.next;
-                    }
-                    newCurrent.val = newCurrent.val + 1;
-                    if(newCurrent.val == 10) {
-                        newCurrent.val = 0;
-                    }
-                    candidate = newCurrent;
-                }
-            }
+            n = new ListNode(curr1.val + curr2.val);
             curr1 = curr1.next;
             curr2 = curr2.next;
-            dummyCurr = dummyCurr.next;
+            n.next = result;
+            result = n;
         }
-        return dummy.next;
+
+        int carry = 0;
+        result = null;
+        while(n != null) {
+            n.val += carry;
+            if(n.val >= 10) {
+                n.val = n.val % 10;
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+            ListNode buffer = n.next;
+            n.next = result;
+            result = n;
+            n = buffer;
+        }
+
+        if(carry > 0) {
+            n = new ListNode(1);
+            n.next = result;
+            result = n;
+        }
+        return result;
+    }
+
+    private static int size(ListNode a) {
+        int size = 0;
+        while(a != null) {
+            size++;
+            a = a.next;
+        }
+        return size;
     }
 }
 
