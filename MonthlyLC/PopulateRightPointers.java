@@ -1,6 +1,6 @@
 class Solution {
     // Breadth first traversal where each level is stored in an array
-    public Node connext(Node root) {
+    public Node connect(Node root) {
         if(root == null)  { return root; }
         Queue<Node> queue = new LinkedList<>();
         Node current = root;
