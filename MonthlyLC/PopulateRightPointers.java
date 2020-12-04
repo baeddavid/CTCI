@@ -23,4 +23,20 @@ class Solution {
         }
         return root;
     }
+
+    // You may only use constant extra space for this solution
+    public Node connect(Node root) {
+        if(root == null) { return root; }
+        helper(root.left, root.right);
+        return root;
+    }
+
+    private void helper(Node left, Node right) {
+        if(left == null && null == right) { return; }
+        left.next = right;
+
+        helper(left.left, left.right);
+        helper(left.right, right.left);
+        helper(right.left, right.right);
+    }
 }
